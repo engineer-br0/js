@@ -26,7 +26,7 @@ setTimeout(function () {
 
 * However, there are also some drawbacks to using callbacks:
 
-* #### Callback Hell:
+#### Callback Hell:
 * When a callback function is kept inside another function, which in turn is kept inside another function. (in short, a lot of nested callbacks). This causes a pyramid of doom structure causing our code to grow horizontally, making it tough to manage our code.
 
 ```js
@@ -40,15 +40,15 @@ api.createOrder(cart, function () {
 // Callback Hell
 ```
 
-* #### Inversion of control:
+#### Inversion of control:
 This happens when the control of program is no longer in our hands, that may cause some problems like:
 
 * 		A Callback may be called multiple times.
 * 		A Callback would never get called.
 * 		A Callback may be called synchronously.
 
-* #### HOW DO I SOLVE THIS PROBLEM ?
-* ### Using Promises
+####  How to solve these problems ?
+### Using Promises
 * A promise is an object that represents eventual completion/failure of an asynchronous operation.
 * A promise has 3 states: pending | fulfilled | rejected.
 * As soon as promise is fulfilled/rejected => It updates the empty object which is assigned undefined in pending state.
