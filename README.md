@@ -4,7 +4,7 @@
 ```js
 setTimeout(function () {
     console.log("Timer");
-}, 1000) // first argument is callback function and second is timer.
+}, 1000) // first argument is callback function.
 ```
 
 #### Why use Callbacks?
@@ -21,7 +21,7 @@ setTimeout(function () {
   x(function y() {
     console.log("y");
   });
-  // x y timer
+  // OUTPUT- x y timer
   ```
 
 * However, there are also some drawbacks to using callbacks:
@@ -64,23 +64,13 @@ function getData() {
 }
 
 getData(); // Promise resolved value!!
-
-//📌 Till now we have been using Promise.then/.catch to handle promise.
-// Now let's see how async await can help us and how it is different
-
-// The rule is we have to use keyword await in front of promise.
-async function handlePromise() {
-  const val = await p;
-  console.log(val);
-}
-handlePromise(); // Promise resolved value!!
 ```
 
 * So we are the ones in control this time and can easily make sure that our function gets called only once.
 * To avoid callback hell (Pyramid of doom) => We use promise chaining. This way our code expands vertically instead of horizontally. Chaining is done using '.then()'
 
 ```js
-// Callback Hell Example
+// Callback Hell
 createOrder(cart, function (orderId) {
   proceedToPayment(orderId, function (paymentInf) {
     showOrderSummary(paymentInf, function (balance) {
@@ -88,11 +78,8 @@ createOrder(cart, function (orderId) {
     });
   });
 });
-// And now above code is expanding horizontally and this is called pyramid of doom.
-// Callback hell is ugly and hard to maintain.
 
-// Promise fixes this issue too using `Promise Chaining`
-// Example Below is a Promise Chaining
+// Promise fixes the Callback hell issue using `Promise Chaining`
 createOrder(cart)
   .then(function (orderId) {
     proceedToPayment(orderId);
@@ -106,5 +93,35 @@ createOrder(cart)
 ```
 
 
-* ## async await
-* 
+### async await
+* Async and Await in JavaScript are powerful keywords used to handle asynchronous operations with promises.
+* Async functions always return a promise. If a value is returned that is not a promise, JavaScript automatically wraps it in a resolved promise.
+* The await keyword is used to wait for a promise to resolve. It can only be used within an async block.
+* Await makes the code wait until the promise returns a result, allowing for cleaner and more manageable asynchronous code.
+  
+```js
+const p = new Promise((resolve, reject) => {
+  resolve('Promise resolved value!!');
+})
+
+async function handlePromise() {
+  const val = await p;
+  console.log(val);
+}
+handlePromise(); // Promise resolved value!!
+```
+
+### Real World example of async/await (API Fetch)
+
+```js
+async function handlePromise() {
+  try {
+    const data = await fetch('https://api.github.com/users/alok722');
+    const res = await data.json();
+    console.log(res);
+  } catch (err) {
+    console.log(err)
+  }
+};
+handlePromise()
+```
