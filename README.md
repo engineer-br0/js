@@ -111,7 +111,7 @@ async function handlePromise() {
 handlePromise(); // Promise resolved value!!
 ```
 
-### Real World example of async/await (API Fetch)
+### Real World example of async/await (fetch API)
 
 ```js
 async function handlePromise() {
